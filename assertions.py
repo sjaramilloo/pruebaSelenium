@@ -3,11 +3,13 @@ from pyunitreport import HTMLTestRunner
 from selenium import webdriver
 from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.common.by import By
+from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.chrome.service import Service
 
 class AssertionsTest(unittest.TestCase):
     
     def setUp(self):
-        self.driver = webdriver.Chrome(executable_path = r'D:\Users\USUARIO\Desktop\Tec\pruebaSelenium\chromedriver.exe')
+        driver=webdriver.Chrome(service=Service(ChromeDriverManager().install()))
         driver = self.driver
         driver.implicitly_wait(10)
         driver.maximize_window()
